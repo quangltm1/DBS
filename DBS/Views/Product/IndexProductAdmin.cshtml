@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DBS.Models.Product>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("IndexProductAdmin", "Product", FormMethod.Get))
+{
+    <input type="text" name="_name" />
+    <input type="submit" value="Search" />
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NamePro)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var pro in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => pro.ProductID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => pro.NamePro)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = pro.ProductID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = pro.ProductID })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
