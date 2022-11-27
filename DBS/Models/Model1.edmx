@@ -71,14 +71,6 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="Voucher">
-          <Key>
-            <PropertyRef Name="ProductID" />
-          </Key>
-          <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="Voucher" Type="nvarchar" MaxLength="50" />
-          <Property Name="Value" Type="decimal" Precision="2" Scale="2" />
-        </EntityType>
         <Association Name="FK__OrderDeta__IDOrd__4316F928">
           <End Role="OrderPro" Type="Self.OrderPro" Multiplicity="0..1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
@@ -127,18 +119,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Voucher_Products">
-          <End Role="Products" Type="Self.Products" Multiplicity="1" />
-          <End Role="Voucher" Type="Self.Voucher" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="Voucher">
-              <PropertyRef Name="ProductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DBSportStoreModelStoreContainer">
           <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
@@ -147,7 +127,6 @@
           <EntitySet Name="OrderPro" EntityType="Self.OrderPro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__OrderDeta__IDOrd__4316F928" Association="Self.FK__OrderDeta__IDOrd__4316F928">
             <End Role="OrderPro" EntitySet="OrderPro" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
@@ -163,10 +142,6 @@
           <AssociationSet Name="FK_Pro_Category" Association="Self.FK_Pro_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Voucher_Products" Association="Self.FK_Voucher_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="Voucher" EntitySet="Voucher" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -236,7 +211,6 @@
           <Property Name="ImagePro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Category1" Relationship="Self.FK_Pro_Category" FromRole="Products" ToRole="Category" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__IDPro__4222D4EF" FromRole="Products" ToRole="OrderDetail" />
-          <NavigationProperty Name="Voucher" Relationship="DBSportStoreModel.FK_Voucher_Products" FromRole="Product" ToRole="Voucher" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -320,33 +294,7 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
-          <EntitySet Name="Vouchers" EntityType="DBSportStoreModel.Voucher" />
-          <AssociationSet Name="FK_Voucher_Products" Association="DBSportStoreModel.FK_Voucher_Products">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Voucher" EntitySet="Vouchers" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Voucher">
-          <Key>
-            <PropertyRef Name="ProductID" />
-          </Key>
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="Voucher1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Value" Type="Decimal" Precision="2" Scale="2" />
-          <NavigationProperty Name="Product" Relationship="DBSportStoreModel.FK_Voucher_Products" FromRole="Voucher" ToRole="Product" />
-        </EntityType>
-        <Association Name="FK_Voucher_Products">
-          <End Type="DBSportStoreModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="DBSportStoreModel.Voucher" Role="Voucher" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="Voucher">
-              <PropertyRef Name="ProductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -423,15 +371,6 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Vouchers">
-            <EntityTypeMapping TypeName="DBSportStoreModel.Voucher">
-              <MappingFragment StoreEntitySet="Voucher">
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="Voucher1" ColumnName="Voucher" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

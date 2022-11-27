@@ -9,9 +9,11 @@
 
 namespace DBS.Models
 {
+    using DBS.Models;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +21,14 @@ namespace DBS.Models
         {
             this.Products = new HashSet<Product>();
         }
-    
+
         public int Id { get; set; }
         public string IDCate { get; set; }
         public string NameCate { get; set; }
-    
+        [NotMapped]
+        public List<Category> ListCate { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
-        public List<Category> ListCate { get; internal set; }
     }
 }

@@ -19,8 +19,11 @@ namespace DBS.Controllers
         {
             List<OrderDetail> orderD = database.OrderDetails.ToList();
             List<Product> proList = database.Products.ToList();
-            var query = from od in orderD join p in proList on od.IDProduct equals p.ProductID into tbl
-                        group od by new { idPro = od.IDProduct,
+            var query = from od in orderD
+                        join p in proList on od.IDProduct equals p.ProductID into tbl
+                        group od by new
+                        {
+                            idPro = od.IDProduct,
                             namePro = od.Product.NamePro,
                             imagePro = od.Product.ImagePro,
                             price = od.Product.Price,

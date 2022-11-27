@@ -9,28 +9,37 @@
 
 namespace DBS.Models
 {
+    using DBS.Models;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.IO;
+    using System.Web;
+    using System.Web.Mvc;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
             this.OrderDetails = new HashSet<OrderDetail>();
+            ImagePro = "~/Content/images/DeskTop.jpg";
         }
-    
+        [NotMapped]
+        public HttpPostedFileBase UploadImage { get; set; }
+
         public int ProductID { get; set; }
         public string NamePro { get; set; }
         public string DecriptionPro { get; set; }
         public string Category { get; set; }
         public Nullable<decimal> Price { get; set; }
         public string ImagePro { get; set; }
-    
+        public Nullable<int> Quantity { get; set; }
+
         public virtual Category Category1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        public virtual Voucher Voucher { get; set; }
-        public object UploadImage { get; internal set; }
+
+
     }
 }

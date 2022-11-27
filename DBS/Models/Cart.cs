@@ -40,7 +40,6 @@ namespace DBS.Models
 
         public decimal Total_money()
         {
-            
             var total = items.Sum(s => s._quantity * s._product.Price);
             return (decimal)total;
         }

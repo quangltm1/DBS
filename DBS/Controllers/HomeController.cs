@@ -14,7 +14,7 @@ namespace DBS.Controllers
 {
     public class HomeController : Controller
     {
-        
+
 
         [NotMapped]
         public HttpPostedFileBase UploadImage { get; set; }

@@ -47,7 +47,7 @@ namespace DBS.Controllers
         public ActionResult Create()
         {
             List<Category> list = database.Categories.ToList();
-            ViewBag.listCategory = new SelectList(list, "IDCate", "NameCate", "");
+            ViewBag.listCategory = new SelectList(list, "IDCate", "NameCate");
             Product pro = new Product();
             return View(pro);
         }
@@ -64,12 +64,12 @@ namespace DBS.Controllers
                     string extent = Path.GetExtension(pro.UploadImage.FileName);
                     filename = filename + extent;
                     pro.ImagePro = "~/Content/images/" + filename;
-                    pro.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/images"), filename));
+                    pro.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), filename));
                 }
                 ViewBag.listCategory = new SelectList(list, "IDCate", "NameCate", 1);
                 database.Products.Add(pro);
                 database.SaveChanges();
-                return RedirectToAction("IndexProductAdmin");
+                return RedirectToAction("IndexProductAdmin"); 
             }
             catch
             {

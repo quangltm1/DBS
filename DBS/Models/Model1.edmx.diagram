@@ -16,8 +16,6 @@
         <AssociationConnector Association="DBSportStoreModel.FK__OrderPro__IDCus__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="DBSportStoreModel.FK__OrderDeta__IDOrd__4316F928" ManuallyRouted="false" />
         <AssociationConnector Association="DBSportStoreModel.FK__OrderDeta__IDPro__4222D4EF" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DBSportStoreModel.Voucher" Width="1.5" PointX="5.25" PointY="7.5" />
-        <AssociationConnector Association="DBSportStoreModel.FK_Voucher_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -74,7 +74,7 @@ namespace DBS.Controllers
             return PartialView("BagCart");
         }
 
-        public ActionResult CheckOut(FormCollection form )
+        public ActionResult CheckOut(FormCollection form)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace DBS.Controllers
                     _order_detail.UnitPrice = (double)item._product.Price;
                     _order_detail.Quantity = item._quantity;
                     database.OrderDetails.Add(_order_detail);
-                    foreach(var p in database.Products.Where(s => s.ProductID==_order_detail.IDProduct))
+                    foreach (var p in database.Products.Where(s => s.ProductID == _order_detail.IDProduct))
                     {
                         var update_quan_pro = p.Quantity - item._quantity;
                         p.Quantity = update_quan_pro;

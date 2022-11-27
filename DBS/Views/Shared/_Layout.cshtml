@@ -13,22 +13,21 @@
         <div class="container">
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/Home/Index" style="font-size:initial;">Trang Chủ</a></li>
+                    <li><a href="/Product/Index" style="font-size:initial;">Trang Chủ</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <span>
                             <a href="/ShoppingCart/ShowCart">
-                                @*<img src="@Url.Content("~/Content/images/cart2.png")" style="height:30px;width:30px;margin-top:10px;" />*@
-                                <span class="glyphicon glyphicon-shopping-cart" style="color: #808080; height:30px; width: 30px; margin-top: 10px; "></span>
+                                <span class="glyphicon glyphicon-shopping-cart" style="color: #808080; height:30px; width: 30px; margin-top: 12px; "></span>
                             </a>
                         </span>
                         @Html.Action("BagCart", "ShoppingCart")
                     </li>
-                    <li><a href="/LoginUser/RegisterUser" style="font-size: initial; margin-top: 2px"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-                    <li><a href="/LoginUser/Index" style="font-size: initial; margin-top: 2px"><span class="glyphicon glyphicon-log-in"></span>LogIn</a></li>
-                    <li><a href="@Url.Action("LogoutUser","LoginUser")" style="margin-top:2px ;font-size:initial;">Logout</a></li>
+                    <li><a href="/LoginUser/RegisterUser" style="font-size: initial; margin-top: 2px"><span class="glyphicon glyphicon-user"></span> Sign Up </a></li>
+                    <li><a href="/LoginUser/Index" style="font-size: initial; margin-top: 2px"><span class="glyphicon glyphicon-log-in"></span> LogIn </a></li>
+                    <li><a href="@Url.Action("LogoutUser","LoginUser")" style="margin-top:2px ;font-size:initial;"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
                     <li style="padding-top:15px; color:white;">
                         @if (Session["NameUser"] == null)
                         {
@@ -47,7 +46,7 @@
     <div class="container-fluid body-content">
         <div class="row">
             <div class="col-md-2">
-                <ul style="text-decoration:none;background-color:orangered;border:double ;margin-top:20px;list-style-type:none;padding:10px;">
+                <ul style="text-decoration:none;background-color:cornflowerblue;border:double ;margin-top:20px;list-style-type:none;padding:10px;">
                     <li><a href="/OrderDetail/GroupByTop5" style="color:white;" id="animation-top5">Top 5 sản phẩm bán chạy</a></li>
                 </ul>
                 <ul style="list-style-type:none;">
